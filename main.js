@@ -609,13 +609,17 @@ let Header = () => {
     return h('h1', {}, '⚡️. blog');
 };
 
-let BlogList = () => {
+let BlogRow = (props) => {
+    return h('li', {}, [
+        h('h2', {}, [props.post.id + ': ', props.post.title]), 
+        h('p', {}, props.post.body),
+    ]);
+};
+
+let BlogList = (props) => {
     return h('ul', {}, [
-        posts.map((post) => { 
-            return h('li', {}, [
-                h('h2', {}, [post.id + ': ', post.title]), 
-                h('p', {}, post.body),
-            ]);
+        props.posts.slice(0, 7).map((post) => {
+            return h(BlogRow, {post});
         })
     ]);
 };
@@ -632,7 +636,7 @@ let Footer = () => {
 // view
 let vdom = h('div', {}, [
     h(Header, {}),
-    h(BlogList, {}),
+    h(BlogList, {posts}),
     h(Footer, {}),
 ]);
 
