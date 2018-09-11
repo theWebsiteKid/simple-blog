@@ -102,4 +102,4 @@ let BlogPage = () => {
 };
 
 // render to root div
-ReactDOM.render(h(BlogPage), document.querySelector('#root'));
+ReactDOM.render(h(BlogPage), document.querySelector('.react-root'));
