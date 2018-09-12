@@ -80,7 +80,23 @@ let addDunder = postToDunder => {
     posts = newPosts;
 };
 
-// components / models:
+// smart components (classes, methods, stateful)
+class BlogPage extends React.Component {
+    // gives us this.props = props
+    constructor (props) {
+        super(props);
+    };
+    // renders BlogPage
+    render() {
+        return h('div', {}, [
+            h(Header, {}),
+            h(BlogList, { posts }),
+            h(Footer, {}),
+        ]);
+    }
+};
+
+// dumb components (pure functions, stateless)
 let Header = () => 
     h('a', { href: '/', className: 'header' }, [
         h('h1', {}, '⚡️. blog'),
@@ -91,7 +107,7 @@ let BlogRow = props =>
         h('h2', {}, [props.post.id + '. ', props.post.title]), 
         h('p', {}, props.post.body),
         h('button', {
-            onClick: () => {
+            onClick: () => { 
                 removePost(props.post);
                 rerender();
             },
@@ -120,13 +136,6 @@ let Footer = () =>
                 ['Crafted with ⚡️ by @theWebsiteKid']
             ),
         ]),
-    ]);
-
-let BlogPage = () =>
-    h('div', {}, [
-        h(Header, {}),
-        h(BlogList, { posts }),
-        h(Footer, {}),
     ]);
 
 // render to root
