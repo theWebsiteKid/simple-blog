@@ -124,10 +124,9 @@ let BlogPage = () =>
     ]);
 
 // render to root
-let rerender = () => {
+let rerender = () => 
     ReactDOM.render(
         h(BlogPage),
         document.querySelector('.react-root')
     );
-};
 rerender();
