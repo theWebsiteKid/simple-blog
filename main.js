@@ -65,9 +65,9 @@ let posts = [
 ]
 
 // actions:
-let removePost = (postToRemove) => {
-    posts = posts.filter(post => post.id !== postToRemove.id);
-};
+let removePost = postToRemove => posts = posts.filter(
+    post => post.id !== postToRemove.id
+);
 
 let addDunder = (postToDunder) => {
     let newPosts = posts.map(post => 
