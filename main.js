@@ -106,8 +106,8 @@ let BlogList = props =>
         props.posts.slice(0, 5).map(post => h(BlogRow, {post})),
     ]);
 
-let Footer = () => {
-    return h('footer', {}, [
+let Footer = () => 
+    h('footer', {}, [
         h('p', {}, [
             '© 2018 | ',
             h('a', {href: 'http://xavierduncan.com', target: '_blank'}, [
@@ -115,7 +115,6 @@ let Footer = () => {
             ]),
         ]),
     ]);
-};
 
 let BlogPage = () => {
     return h('div', {}, [
