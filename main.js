@@ -81,7 +81,10 @@ let addDunder = postToDunder => {
 };
 
 // components / models:
-let Header = () => h('h1', {}, '⚡️. blog');
+let Header = () => 
+    h('a', { href: '/', className: 'header' }, [
+        h('h1', {}, '⚡️. blog'),
+    ]);
 
 let BlogRow = props => 
     h('li', {}, [
@@ -102,24 +105,27 @@ let BlogRow = props =>
     ]);
 
 let BlogList = props => 
-    h('ul', {}, [
-        props.posts.slice(0, 5).map(post => h(BlogRow, {post})),
+    h('ul', { className: 'blog-list' }, [
+        props.posts.slice(0, 5).map(post => h(BlogRow, { post })),
     ]);
 
 let Footer = () => 
     h('footer', {}, [
         h('p', {}, [
             '© 2018 | ',
-            h('a', {href: 'http://xavierduncan.com', target: '_blank'}, [
-                'Crafted with ⚡️ by @theWebsiteKid'
-            ]),
+            h('a', { 
+                href: 'http://xavierduncan.com',
+                target: '_blank',
+                className: 'footer' },
+                ['Crafted with ⚡️ by @theWebsiteKid']
+            ),
         ]),
     ]);
 
 let BlogPage = () =>
     h('div', {}, [
         h(Header, {}),
-        h(BlogList, {posts}),
+        h(BlogList, { posts }),
         h(Footer, {}),
     ]);
 

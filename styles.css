@@ -2,6 +2,13 @@ body {
     margin: 0;
     padding: 0 2.25em; }
 
-ul {
+.header {
+    text-decoration: none; }
+
+.blog-list {
+    max-width: 650px;
     list-style-type: none;
     padding: 0; }
+
+.footer {
+    text-decoration: none; }
