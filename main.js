@@ -81,9 +81,7 @@ let addDunder = postToDunder => {
 };
 
 // components / models:
-let Header = () => {
-    return h('h1', {}, '⚡️. blog');
-};
+let Header = () => h('h1', {}, '⚡️. blog');
 
 let BlogRow = (props) => {
     return h('li', {}, [
