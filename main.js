@@ -116,13 +116,12 @@ let Footer = () =>
         ]),
     ]);
 
-let BlogPage = () => {
-    return h('div', {}, [
+let BlogPage = () =>
+    h('div', {}, [
         h(Header, {}),
         h(BlogList, {posts}),
         h(Footer, {}),
     ]);
-};
 
 // render to root
 let rerender = () => {
