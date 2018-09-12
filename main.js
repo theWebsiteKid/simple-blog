@@ -1,6 +1,6 @@
 const h = React.createElement;
 
-// posts data:
+// add attribute to posts data for "dunder!" likes
 let posts = [
     {
         "userId": 1,
@@ -64,6 +64,22 @@ let posts = [
     }
 ]
 
+// actions:
+let removePost = (postToRemove) => {
+    posts = posts.filter(post => post.id !== postToRemove.id);
+};
+
+let addDunder = (postToDunder) => {
+    let newPosts = posts.map(post => 
+        (post.id === postToDunder.id) ?
+            Object.assign({}, post, { title: post.title + '⚡️' })
+            // ^^^ or use { ...post, title: post.title + '⚡️' }
+        :
+            post
+    );
+    posts = newPosts;
+};
+
 // components / models:
 let Header = () => {
     return h('h1', {}, '⚡️. blog');
@@ -71,8 +87,20 @@ let Header = () => {
 
 let BlogRow = (props) => {
     return h('li', {}, [
-        h('h2', {}, [props.post.id + ': ', props.post.title]), 
+        h('h2', {}, [props.post.id + '. ', props.post.title]), 
         h('p', {}, props.post.body),
+        h('button', {
+            onClick: () => {
+                removePost(props.post);
+                rerender();
+            },
+        }, 'Delete Post'),
+        h('button', {
+            onClick: () => {
+                addDunder(props.post);
+                rerender();
+            },
+        }, 'Dunder Bolts!'),
     ]);
 };
 
@@ -80,7 +108,7 @@ let BlogList = (props) => {
     return h('ul', {}, [
         props.posts.slice(0, 5).map((post) => {
             return h(BlogRow, {post});
-        })
+        }),
     ]);
 };
 
@@ -88,7 +116,9 @@ let Footer = () => {
     return h('footer', {}, [
         h('p', {}, [
             '© 2018 | ',
-            h('a', {href: 'http://xavierduncan.com', target: '_blank'}, ['Crafted with ⚡️ by @theWebsiteKid']),
+            h('a', {href: 'http://xavierduncan.com', target: '_blank'}, [
+                'Crafted with ⚡️ by @theWebsiteKid'
+            ]),
         ]),
     ]);
 };
@@ -101,5 +131,11 @@ let BlogPage = () => {
     ]);
 };
 
-// render to root div
-ReactDOM.render(h(BlogPage), document.querySelector('.react-root'));
+// render to root
+let rerender = () => {
+    ReactDOM.render(
+        h(BlogPage),
+        document.querySelector('.react-root')
+    );
+};
+rerender();
