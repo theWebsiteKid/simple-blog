@@ -69,7 +69,7 @@ let removePost = postToRemove => posts = posts.filter(
     post => post.id !== postToRemove.id
 );
 
-let addDunder = (postToDunder) => {
+let addDunder = postToDunder => {
     let newPosts = posts.map(post => 
         (post.id === postToDunder.id) ?
             Object.assign({}, post, { title: post.title + '⚡️' })
