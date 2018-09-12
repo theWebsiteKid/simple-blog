@@ -101,13 +101,10 @@ let BlogRow = props =>
         }, 'Dunder Bolts!'),
     ]);
 
-let BlogList = (props) => {
-    return h('ul', {}, [
-        props.posts.slice(0, 5).map((post) => {
-            return h(BlogRow, {post});
-        }),
+let BlogList = props => 
+    h('ul', {}, [
+        props.posts.slice(0, 5).map(post => h(BlogRow, {post})),
     ]);
-};
 
 let Footer = () => {
     return h('footer', {}, [
