@@ -130,10 +130,10 @@ let Footer = () =>
         h('p', {}, [
             '© 2018 | ',
             h('a', { 
-                href: 'http://xavierduncan.com',
+                href: 'https://xavier.fun',
                 target: '_blank',
                 className: 'footer' },
-                ['Crafted with ⚡️ by @theWebsiteKid']
+                ['Crafted with ⚡️ by @xmd404']
             ),
         ]),
     ]);
